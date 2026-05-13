@@ -99,10 +99,14 @@ function buildLede(stats: any, isEmpty: boolean): string {
 }
 
 const lede = buildLede(stats, isEmpty);
-const pageTitle = `${monthName} ${year} | Archive`;
+const pageTitle = `${monthName} ${year} | Open source contribution`;
 ---
 
-<Base title={pageTitle}>
+<Base
+  title={pageTitle}
+  description={lede}
+  ogImage={`${base}/og/${year}/${month}.png`}
+>
   <header class="site-header">
     <nav>
       <a class="home-link" href={base}>archive</a>
