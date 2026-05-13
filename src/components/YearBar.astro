@@ -1,0 +1,124 @@
+---
+interface MonthEntry {
+  month: number; // 1-12
+  count: number;
+  slug: string;  // e.g. "03"
+}
+
+interface Props {
+  year: number | string;
+  months: MonthEntry[];
+  linkable?: boolean; // if true, month names are links
+}
+
+const { year, months, linkable = true } = Astro.props;
+const base = import.meta.env.BASE_URL;
+
+const MONTH_NAMES = [
+  'Jan','Feb','Mar','Apr','May','Jun',
+  'Jul','Aug','Sep','Oct','Nov','Dec'
+];
+
+const maxCount = Math.max(...months.map(m => m.count), 1);
+
+// Build a full 12-month grid so absent months show a dash
+const fullYear = Array.from({ length: 12 }, (_, i) => {
+  const m = months.find(e => e.month === i + 1);
+  return {
+    month: i + 1,
+    name: MONTH_NAMES[i],
+    count: m?.count ?? 0,
+    slug: (i + 1).toString().padStart(2, '0'),
+    exists: !!m,
+  };
+});
+
+function barBlocks(count: number, max: number): string {
+  if (count === 0) return '';
+  const filled = Math.round((count / max) * 8);
+  return '█'.repeat(Math.max(filled, 1));
+}
+---
+
+<table class="year-bar" aria-label={`Contribution breakdown for ${year}`}>
+  <tbody>
+    {fullYear.map(({ name, count, slug, exists }) => (
+      <tr class={count === 0 ? 'row-empty' : 'row-active'}>
+        <td class="col-month">
+          {(linkable && exists) ? (
+            <a href={`${base}/${year}/${slug}/`}>{name}</a>
+          ) : (
+            <span class="muted">{name}</span>
+          )}
+        </td>
+        <td class="col-bar" aria-hidden="true">
+          {count > 0
+            ? <span class="bar">{barBlocks(count, maxCount)}</span>
+            : <span class="bar-empty">─</span>
+          }
+        </td>
+        <td class="col-count">
+          {count > 0
+            ? <span>{count}</span>
+            : <span class="muted">0</span>
+          }
+        </td>
+      </tr>
+    ))}
+  </tbody>
+</table>
+
+<style>
+  .year-bar {
+    border-collapse: collapse;
+    width: 100%;
+    max-width: 36ch;
+  }
+
+  .year-bar tr {
+    line-height: 2;
+  }
+
+  .col-month {
+    font-size: 0.78rem;
+    width: 4ch;
+    padding-right: var(--space-m);
+    white-space: nowrap;
+  }
+
+  .col-month a {
+    color: var(--text);
+    font-weight: 500;
+  }
+
+  .col-month a:hover {
+    color: var(--accent);
+    text-decoration: none;
+  }
+
+  .col-bar {
+    font-size: 0.65rem;
+    letter-spacing: -0.05em;
+    padding-right: var(--space-s);
+    min-width: 12ch;
+  }
+
+  .bar {
+    color: var(--accent);
+  }
+
+  .bar-empty {
+    color: var(--border);
+  }
+
+  .col-count {
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .row-empty .col-month span {
+    opacity: 0.45;
+  }
+</style>

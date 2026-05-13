@@ -1,0 +1,224 @@
+---
+import Base from "../../layouts/Base.astro";
+import PREntry from "../../components/PREntry.astro";
+import MonthNav from "../../components/MonthNav.astro";
+
+export async function getStaticPaths() {
+  const files = import.meta.glob("/data/contributions/*.json", {
+    eager: true,
+  }) as Record<string, any>;
+
+  // Collect all slugs sorted chronologically
+  const slugs = Object.keys(files)
+    .map((path) => path.split("/").pop()!.replace(".json", ""))
+    .sort(); // e.g. ['2024-11', '2025-01', '2025-02', '2025-03']
+
+  return slugs.map((slug, idx) => {
+    const [year, month] = slug.split("-");
+    const data = files[`/data/contributions/${slug}.json`];
+
+    const prevSlug = slugs[idx - 1] ?? null;
+    const nextSlug = slugs[idx + 1] ?? null;
+
+    const MONTH_NAMES = [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December",
+    ];
+
+    function slugToNav(s: string) {
+      if (!s) return null;
+      const [y, m] = s.split("-");
+      return {
+        year: y,
+        month: m,
+        label: `${MONTH_NAMES[parseInt(m, 10) - 1]} ${y}`,
+      };
+    }
+
+    return {
+      params: { year, month },
+      props: {
+        year,
+        month,
+        data,
+        prev: slugToNav(prevSlug),
+        next: slugToNav(nextSlug),
+      },
+    };
+  });
+}
+
+const { year, month, data, prev, next } = Astro.props;
+const base = import.meta.env.BASE_URL;
+
+const MONTH_NAMES = [
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
+];
+
+const monthName = MONTH_NAMES[parseInt(month, 10) - 1];
+const { contributions = [], stats } = data;
+const isEmpty = contributions.length === 0;
+
+// Auto-generated lede from stats
+function buildLede(stats: any, isEmpty: boolean): string {
+  if (isEmpty || stats.total_prs === 0) return "No contributions this month.";
+
+  const prs = stats.total_prs;
+  const repos = stats.repos_touched?.length ?? 0;
+  const langs = stats.languages ?? [];
+
+  const prStr = `${prs} contribution${prs !== 1 ? "s" : ""}`;
+  const repoStr = `${repos} repo${repos !== 1 ? "s" : ""}`;
+  const langStr =
+    langs.length > 0
+      ? ` in ${langs.slice(0, -1).join(", ")}${langs.length > 1 ? " and " : ""}${langs[langs.length - 1]}`
+      : "";
+
+  return `${prStr} across ${repoStr}${langStr}.`;
+}
+
+const lede = buildLede(stats, isEmpty);
+const pageTitle = `${monthName} ${year} | Archive`;
+---
+
+<Base title={pageTitle}>
+  <header class="site-header">
+    <nav>
+      <a class="home-link" href={base}>archive</a>
+      <div class="breadcrumb">
+        <span aria-hidden="true">/</span>
+        <a href={`${base}/${year}/`}>{year}</a>
+        <span aria-hidden="true">/</span>
+        <span>{monthName.toLowerCase()}</span>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <div class="month-heading">
+      <h1>{monthName} {year}</h1>
+      <p class="lede muted">{lede}</p>
+    </div>
+
+    <hr class="rule" />
+
+    {
+      isEmpty ? (
+        <p class="empty-state muted">─</p>
+      ) : (
+        <div class="contributions">
+          {contributions.map((pr: any, i: number) => (
+            <>
+              <PREntry
+                title={pr.title}
+                repo={pr.repo}
+                repo_language={pr.repo_language}
+                pr_url={pr.pr_url}
+                merged_at={pr.merged_at}
+                lines_added={pr.lines_added}
+                lines_removed={pr.lines_removed}
+              />
+              {i < contributions.length - 1 && <hr class="entry-rule" />}
+            </>
+          ))}
+        </div>
+      )
+    }
+
+    <hr class="rule" />
+
+    {
+      !isEmpty && (
+        <div class="month-stats">
+          <span>
+            {stats.total_prs} PR{stats.total_prs !== 1 ? "s" : ""}
+          </span>
+          <span class="stat-sep" aria-hidden="true">
+            ·
+          </span>
+          <span>
+            {stats.repos_touched?.length ?? 0} repo
+            {(stats.repos_touched?.length ?? 0) !== 1 ? "s" : ""}
+          </span>
+          <span class="stat-sep" aria-hidden="true">
+            ·
+          </span>
+          <span>
+            {stats.total_lines_changed?.toLocaleString()} lines changed
+          </span>
+        </div>
+      )
+    }
+
+    <MonthNav prev={prev} next={next} />
+  </main>
+</Base>
+
+<style>
+  .month-heading {
+    margin-bottom: var(--space-l);
+  }
+
+  .month-heading h1 {
+    font-size: 1.5rem;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    margin-bottom: var(--space-xs);
+  }
+
+  .lede {
+    font-size: 0.8rem;
+    font-style: italic;
+  }
+
+  .contributions {
+    margin: var(--space-m) 0;
+  }
+
+  .entry-rule {
+    border: none;
+    border-top: 1px solid var(--bg-subtle);
+    margin: 0;
+  }
+
+  .empty-state {
+    padding: var(--space-m) 0;
+    font-size: 0.875rem;
+    letter-spacing: 0.1em;
+  }
+
+  .month-stats {
+    display: flex;
+    gap: 0.5rem;
+    align-items: baseline;
+    flex-wrap: wrap;
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    padding: var(--space-s) 0;
+  }
+
+  .stat-sep {
+    color: var(--border);
+  }
+</style>

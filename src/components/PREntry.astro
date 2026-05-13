@@ -1,0 +1,124 @@
+---
+interface Props {
+  title: string;
+  repo: string;
+  repo_language: string;
+  pr_url: string;
+  merged_at: string;
+  lines_added: number;
+  lines_removed: number;
+}
+
+const {
+  title,
+  repo,
+  repo_language,
+  pr_url,
+  merged_at,
+  lines_added,
+  lines_removed,
+} = Astro.props;
+
+const date = new Date(merged_at);
+const day = date.getDate().toString().padStart(2, "0");
+const month = date.toLocaleString("en-GB", { month: "short" });
+const formattedDate = `${day} ${month}`;
+
+const diffStr = `+${lines_added} -${lines_removed}`;
+---
+
+<article class="pr-entry">
+  <div class="pr-meta">
+    <a
+      class="pr-repo"
+      href={`https://github.com/${repo}`}
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      {repo}
+    </a>
+    <span class="pr-lang">{repo_language}</span>
+  </div>
+  <div class="pr-title-row">
+    <a class="pr-title" href={pr_url} target="_blank" rel="noopener noreferrer">
+      {title}<span class="pr-arrow" aria-hidden="true"> ↗</span>
+    </a>
+  </div>
+  <div class="pr-details">
+    <span class="pr-date">{formattedDate}</span>
+    <span class="pr-sep" aria-hidden="true">·</span>
+    <span class="pr-diff">{diffStr}</span>
+  </div>
+</article>
+
+<style>
+  .pr-entry {
+    padding: var(--space-m) 0;
+  }
+
+  .pr-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: var(--space-s);
+    margin-bottom: 0.2rem;
+  }
+
+  .pr-repo {
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--text);
+    letter-spacing: 0.02em;
+  }
+
+  .pr-repo:hover {
+    color: var(--accent);
+    text-decoration: none;
+  }
+
+  .pr-lang {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .pr-title {
+    font-size: 0.875rem;
+    font-weight: 400;
+    color: var(--link);
+    line-height: 1.4;
+    word-break: break-word;
+  }
+
+  .pr-title:hover {
+    color: var(--accent-hover);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  .pr-arrow {
+    font-size: 0.75rem;
+    opacity: 0.7;
+  }
+
+  .pr-details {
+    margin-top: 0.25rem;
+    display: flex;
+    gap: 0.5rem;
+    align-items: baseline;
+    flex-wrap: wrap;
+  }
+
+  .pr-date,
+  .pr-diff,
+  .pr-sep {
+    font-size: 0.72rem;
+    color: var(--text-muted);
+  }
+
+  .pr-diff {
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 0.02em;
+  }
+</style>

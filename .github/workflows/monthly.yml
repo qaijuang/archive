@@ -1,0 +1,81 @@
+name: Monthly Archive Publish
+
+# Runs at 23:55 UTC on days 28-31 of every month.
+# The script itself checks whether today is truly the last day of the month
+# and exits early if not, handling months shorter than 31 days correctly.
+
+on:
+  schedule:
+    - cron: "55 23 28-31 * *"
+  workflow_dispatch:
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pages: write
+      id-token: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Setup Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.14"
+          cache: "pip"
+
+      - name: Install Python dependencies
+        run: pip install -r scripts/requirements.txt
+
+      - name: Check if today is the last day of the month
+        id: date-check
+        run: python scripts/is_last_day.py
+
+      - name: Fetch contributions
+        if: steps.date-check.outputs.is_last_day == 'true'
+        run: |
+          YEAR=$(date +%Y)
+          MONTH=$(date +%-m)
+          python scripts/fetch.py --year "$YEAR" --month "$MONTH"
+        env:
+          GH_PAT: ${{ secrets.GH_PAT }}
+          GH_USERNAME: ${{ github.repository_owner }}
+          GH_EXCLUDED_ORGS: ${{ secrets.GH_EXCLUDED_ORGS }}
+
+      - name: Commit new contribution data
+        if: steps.date-check.outputs.is_last_day == 'true'
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/contributions/
+          git diff --cached --quiet && echo "[skip] no new data to commit" || \
+            git commit -m "chore: archive $(date +%Y-%m) contributions"
+          git push
+
+      - name: Setup Node
+        uses: actions/setup-node@v6
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build site
+        run: npm run build
+        env:
+          BASE_PATH: /archive
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v6
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v5
+        with:
+          path: dist/
+
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v5

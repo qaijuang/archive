@@ -1,0 +1,84 @@
+---
+import Base from "../layouts/Base.astro";
+import YearBar from "../components/YearBar.astro";
+
+export async function getStaticPaths() {
+  const files = import.meta.glob("/data/contributions/*.json", {
+    eager: true,
+  }) as Record<string, any>;
+
+  const byYear: Record<
+    string,
+    { month: number; count: number; slug: string }[]
+  > = {};
+
+  for (const [path, data] of Object.entries(files)) {
+    const filename = path.split("/").pop()!.replace(".json", "");
+    const [year, monthStr] = filename.split("-");
+    const month = parseInt(monthStr, 10);
+
+    if (!byYear[year]) byYear[year] = [];
+    byYear[year].push({
+      month,
+      count: data.stats?.total_prs ?? 0,
+      slug: monthStr,
+    });
+  }
+
+  return Object.entries(byYear).map(([year, months]) => ({
+    params: { year },
+    props: { year, months },
+  }));
+}
+
+const { year, months } = Astro.props;
+const base = import.meta.env.BASE_URL;
+
+const totalYear = months.reduce((sum: number, m: any) => sum + m.count, 0);
+---
+
+<Base title={`${year} | Archive`}>
+  <header class="site-header">
+    <nav>
+      <a class="home-link" href={base}>archive</a>
+      <div class="breadcrumb">
+        <span aria-hidden="true">/</span>
+        <span>{year}</span>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <div class="year-heading">
+      <h1>{year}</h1>
+      <p class="year-summary muted">
+        {
+          totalYear > 0
+            ? `${totalYear} contribution${totalYear !== 1 ? "s" : ""} across ${months.filter((m: any) => m.count > 0).length} active month${months.filter((m: any) => m.count > 0).length !== 1 ? "s" : ""}.`
+            : "No contributions recorded this year."
+        }
+      </p>
+    </div>
+
+    <hr class="rule" />
+
+    <YearBar year={year} months={months} linkable={true} />
+  </main>
+</Base>
+
+<style>
+  .year-heading {
+    margin-bottom: var(--space-l);
+  }
+
+  .year-heading h1 {
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin-bottom: var(--space-xs);
+    letter-spacing: -0.01em;
+  }
+
+  .year-summary {
+    font-size: 0.8rem;
+  }
+</style>

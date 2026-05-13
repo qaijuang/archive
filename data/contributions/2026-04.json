@@ -1,0 +1,110 @@
+{
+  "month": "2026-04",
+  "generated_at": "2026-05-13T14:09:00Z",
+  "contributions": [
+    {
+      "id": "PR_kwDOAAsO6M7UlUg7",
+      "title": "Fix E0191 suggestion for empty dyn trait args",
+      "repo": "rust-lang/rust",
+      "repo_language": "Rust",
+      "pr_number": 155637,
+      "pr_url": "https://github.com/rust-lang/rust/pull/155637",
+      "merged_at": "2026-04-23T19:50:52Z",
+      "lines_added": 37,
+      "lines_removed": 8,
+      "lines_changed": 45,
+      "labels": [
+        "T-compiler",
+        "S-waiting-on-bors"
+      ]
+    },
+    {
+      "id": "PR_kwDOAAsO6M7UnmcL",
+      "title": "Improve suggestion for $-prefixed fragment specifiers",
+      "repo": "rust-lang/rust",
+      "repo_language": "Rust",
+      "pr_number": 155643,
+      "pr_url": "https://github.com/rust-lang/rust/pull/155643",
+      "merged_at": "2026-04-25T10:00:50Z",
+      "lines_added": 56,
+      "lines_removed": 10,
+      "lines_changed": 66,
+      "labels": [
+        "T-compiler",
+        "S-waiting-on-bors"
+      ]
+    },
+    {
+      "id": "PR_kwDOAAsO6M7VnRGU",
+      "title": "Do not suggest internal cfg trace attributes",
+      "repo": "rust-lang/rust",
+      "repo_language": "Rust",
+      "pr_number": 155783,
+      "pr_url": "https://github.com/rust-lang/rust/pull/155783",
+      "merged_at": "2026-04-26T00:16:31Z",
+      "lines_added": 25,
+      "lines_removed": 1,
+      "lines_changed": 26,
+      "labels": [
+        "T-compiler",
+        "S-waiting-on-bors"
+      ]
+    },
+    {
+      "id": "PR_kwDOAAsO6M7VOsHt",
+      "title": "Suggest `.iter()` for shared projections",
+      "repo": "rust-lang/rust",
+      "repo_language": "Rust",
+      "pr_number": 155719,
+      "pr_url": "https://github.com/rust-lang/rust/pull/155719",
+      "merged_at": "2026-04-26T23:53:45Z",
+      "lines_added": 178,
+      "lines_removed": 9,
+      "lines_changed": 187,
+      "labels": [
+        "T-compiler",
+        "S-waiting-on-bors"
+      ]
+    },
+    {
+      "id": "PR_kwDOM7BPMc7WzNtq",
+      "title": "Reject unsupported glibc in installer",
+      "repo": "superradcompany/microsandbox",
+      "repo_language": "Rust",
+      "pr_number": 635,
+      "pr_url": "https://github.com/superradcompany/microsandbox/pull/635",
+      "merged_at": "2026-04-29T19:42:40Z",
+      "lines_added": 69,
+      "lines_removed": 0,
+      "lines_changed": 69,
+      "labels": []
+    },
+    {
+      "id": "PR_kwDOAAsO6M7V9nT6",
+      "title": "Avoid misleading return-type note for foreign `Fn` callees",
+      "repo": "rust-lang/rust",
+      "repo_language": "Rust",
+      "pr_number": 155877,
+      "pr_url": "https://github.com/rust-lang/rust/pull/155877",
+      "merged_at": "2026-04-30T01:13:54Z",
+      "lines_added": 212,
+      "lines_removed": 42,
+      "lines_changed": 254,
+      "labels": [
+        "T-compiler",
+        "S-waiting-on-bors"
+      ]
+    }
+  ],
+  "stats": {
+    "total_prs": 6,
+    "repos_touched": [
+      "rust-lang/rust",
+      "superradcompany/microsandbox"
+    ],
+    "languages": [
+      "Rust"
+    ],
+    "total_lines_changed": 647
+  }
+}

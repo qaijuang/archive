@@ -1,0 +1,86 @@
+name: Backfill Archive
+
+on:
+  workflow_dispatch:
+    inputs:
+      from_year:
+        description: "Backfill from year (e.g. 2020)"
+        required: true
+        type: string
+      from_month:
+        description: "Start month 1-12 (default: 1 = January)"
+        required: false
+        default: "1"
+        type: string
+
+jobs:
+  backfill:
+    runs-on: ubuntu-latest
+    # Backfill can take a while for long histories
+    timeout-minutes: 300
+    permissions:
+      contents: write
+      pages: write
+      id-token: write
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Setup Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.14"
+
+      - name: Install Python dependencies
+        run: pip install -r scripts/requirements.txt
+
+      - name: Run backfill
+        run: |
+          python scripts/backfill.py \
+            --from-year  "${{ github.event.inputs.from_year }}" \
+            --from-month "${{ github.event.inputs.from_month }}"
+        env:
+          GH_PAT: ${{ secrets.GH_PAT }}
+          GH_USERNAME: ${{ github.repository_owner }}
+          GH_EXCLUDED_ORGS: ${{ secrets.GH_EXCLUDED_ORGS }}
+
+      - name: Commit backfilled data
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/contributions/
+          git diff --cached --quiet \
+            && echo "[skip] no new files to commit" \
+            || git commit -m "chore: backfill contributions from ${{ github.event.inputs.from_year }}-$(date +%m)"
+          git push
+
+      - name: Setup Node
+        uses: actions/setup-node@v6
+        with:
+          node-version: 26
+          cache: npm
+
+      - name: Install Node dependencies
+        run: npm ci
+
+      - name: Build site
+        run: npm run build
+        env:
+          NODE_ENV: production
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v5
+        with:
+          path: dist/
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v5

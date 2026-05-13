@@ -1,0 +1,113 @@
+---
+import Base from "../layouts/Base.astro";
+
+// Load all contribution JSON files
+const files = import.meta.glob("/data/contributions/*.json", {
+  eager: true,
+}) as Record<string, any>;
+const base = import.meta.env.BASE_URL;
+
+// Aggregate by year
+const byYear: Record<string, number> = {};
+
+for (const [path, data] of Object.entries(files)) {
+  const filename = path.split("/").pop()!.replace(".json", ""); // e.g. "2025-03"
+  const [year] = filename.split("-");
+  byYear[year] = (byYear[year] ?? 0) + (data.stats?.total_prs ?? 0);
+}
+
+const years = Object.entries(byYear).sort(([a], [b]) => Number(b) - Number(a)); // most recent first
+
+const totalAll = years.reduce((sum, [, count]) => sum + count, 0);
+---
+
+<Base title="My open Source Archive">
+  <header class="site-header">
+    <nav>
+      <span class="home-link">archive</span>
+    </nav>
+  </header>
+
+  <main>
+    <section class="intro">
+      <p class="intro-text">
+        A chronological record of my open source contributions. Updated
+        automatically at the end of each month.
+      </p>
+      <p class="intro-total muted">
+        {totalAll} total contributions across {years.length} year{
+          years.length !== 1 ? "s" : ""
+        }.
+      </p>
+    </section>
+
+    <hr class="rule" />
+
+    <ul class="year-list" role="list">
+      {
+        years.map(([year, count]) => (
+          <li class="year-item">
+            <a class="year-link" href={`${base}/${year}/`}>
+              {year}
+            </a>
+            <span class="year-count muted">
+              {count} contribution{count !== 1 ? "s" : ""}
+            </span>
+          </li>
+        ))
+      }
+    </ul>
+  </main>
+</Base>
+
+<style>
+  .intro {
+    margin-bottom: var(--space-l);
+  }
+
+  .intro-text {
+    font-size: 0.875rem;
+    color: var(--text-muted);
+    max-width: 52ch;
+    line-height: 1.8;
+    margin-bottom: var(--space-xs);
+  }
+
+  .intro-total {
+    font-size: 0.78rem;
+  }
+
+  .year-list {
+    list-style: none;
+    margin-top: var(--space-m);
+  }
+
+  .year-item {
+    display: flex;
+    align-items: baseline;
+    gap: var(--space-m);
+    padding: var(--space-xs) 0;
+    border-bottom: 1px solid var(--bg-subtle);
+  }
+
+  .year-item:last-child {
+    border-bottom: none;
+  }
+
+  .year-link {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--text);
+    min-width: 5ch;
+    transition: color 0.1s;
+  }
+
+  .year-link:hover {
+    color: var(--accent);
+    text-decoration: none;
+  }
+
+  .year-count {
+    font-size: 0.78rem;
+  }
+</style>

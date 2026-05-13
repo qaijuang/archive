@@ -1,0 +1,54 @@
+---
+interface Props {
+  prev: { year: string; month: string; label: string } | null;
+  next: { year: string; month: string; label: string } | null;
+}
+
+const { prev, next } = Astro.props;
+const base = import.meta.env.BASE_URL;
+---
+
+<nav class="month-nav" aria-label="Monthly navigation">
+  <div class="nav-prev">
+    {prev ? (
+      <a href={`${base}/${prev.year}/${prev.month}/`}>
+        <span aria-hidden="true">←</span> {prev.label}
+      </a>
+    ) : (
+      <span class="nav-disabled" aria-hidden="true">←</span>
+    )}
+  </div>
+  <div class="nav-next">
+    {next ? (
+      <a href={`${base}/${next.year}/${next.month}/`}>
+        {next.label} <span aria-hidden="true">→</span>
+      </a>
+    ) : (
+      <span class="nav-disabled" aria-hidden="true">→</span>
+    )}
+  </div>
+</nav>
+
+<style>
+  .month-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--space-l) 0 var(--space-m);
+    font-size: 0.78rem;
+  }
+
+  .month-nav a {
+    color: var(--text-muted);
+    transition: color 0.1s;
+  }
+
+  .month-nav a:hover {
+    color: var(--accent);
+    text-decoration: none;
+  }
+
+  .nav-disabled {
+    color: var(--border);
+  }
+</style>
