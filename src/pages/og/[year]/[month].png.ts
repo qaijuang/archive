@@ -46,8 +46,6 @@ const T = {
   muted: "#6b6358",
   amber: "#c9913a",
   border: "#2e2b24",
-  dim: "#252320",
-  repoFg: "#332f2a",
 } as const;
 
 // Helper
@@ -106,7 +104,7 @@ function buildCard(
 ): Record<string, unknown> {
   const isEmpty = data.contributions.length === 0;
   const accent = isEmpty ? T.border : T.amber;
-  const statsColor = isEmpty ? T.dim : T.amber;
+  const statsColor = isEmpty ? T.muted : T.amber;
 
   const { line1, line2 } = isEmpty
     ? { line1: "No contributions this month.", line2: null }
@@ -281,7 +279,7 @@ function buildCard(
                   {
                     fontSize: "14px",
                     fontWeight: 400,
-                    color: T.repoFg,
+                    color: T.muted,
                     letterSpacing: "0.02em",
                     lineHeight: 1,
                   },
