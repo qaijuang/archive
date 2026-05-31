@@ -1,0 +1,236 @@
+{
+  "month": "2026-05",
+  "generated_at": "2026-05-31T01:56:43Z",
+  "contributions": [
+    {
+      "id": "PR_kwDOBPtCTs7YaHtq",
+      "title": "Place HRTB binders before fn qualifiers",
+      "repo": "rust-lang/reference",
+      "repo_language": "Rust",
+      "pr_number": 2260,
+      "pr_url": "https://github.com/rust-lang/reference/pull/2260",
+      "merged_at": "2026-05-05T19:26:24Z",
+      "lines_added": 1,
+      "lines_removed": 1,
+      "lines_changed": 2,
+      "labels": []
+    },
+    {
+      "id": "PR_kwDOAAsO6M7Xfs7n",
+      "title": "Print HRTB binders before fn qualifiers",
+      "repo": "rust-lang/rust",
+      "repo_language": "Rust",
+      "pr_number": 156058,
+      "pr_url": "https://github.com/rust-lang/rust/pull/156058",
+      "merged_at": "2026-05-05T22:56:10Z",
+      "lines_added": 90,
+      "lines_removed": 28,
+      "lines_changed": 118,
+      "labels": [
+        "T-compiler",
+        "S-waiting-on-bors"
+      ]
+    },
+    {
+      "id": "PR_kwDOAAsO6M7YlMEj",
+      "title": "Do not cache `lints_that_dont_need_to_run` across sessions",
+      "repo": "rust-lang/rust",
+      "repo_language": "Rust",
+      "pr_number": 156214,
+      "pr_url": "https://github.com/rust-lang/rust/pull/156214",
+      "merged_at": "2026-05-08T14:56:25Z",
+      "lines_added": 9,
+      "lines_removed": 1,
+      "lines_changed": 10,
+      "labels": [
+        "T-compiler",
+        "S-waiting-on-bors"
+      ]
+    },
+    {
+      "id": "PR_kwDOAAsO6M7VVbsl",
+      "title": "Reject outer attributes on `cfg_select` branches",
+      "repo": "rust-lang/rust",
+      "repo_language": "Rust",
+      "pr_number": 155734,
+      "pr_url": "https://github.com/rust-lang/rust/pull/155734",
+      "merged_at": "2026-05-08T14:56:26Z",
+      "lines_added": 185,
+      "lines_removed": 4,
+      "lines_changed": 189,
+      "labels": [
+        "A-attributes",
+        "T-compiler",
+        "S-waiting-on-bors"
+      ]
+    },
+    {
+      "id": "PR_kwDOAQnScc7YTmvS",
+      "title": "Rebuild when -Zpublic-dependency changes",
+      "repo": "rust-lang/cargo",
+      "repo_language": "Rust",
+      "pr_number": 16965,
+      "pr_url": "https://github.com/rust-lang/cargo/pull/16965",
+      "merged_at": "2026-05-09T16:37:42Z",
+      "lines_added": 83,
+      "lines_removed": 8,
+      "lines_changed": 91,
+      "labels": [
+        "A-build-execution",
+        "A-rebuild-detection",
+        "S-waiting-on-author"
+      ]
+    },
+    {
+      "id": "PR_kwDOAAsO6M7bP_tF",
+      "title": "Require UTF-8 in `Utf8Pattern::StringPattern`",
+      "repo": "rust-lang/rust",
+      "repo_language": "Rust",
+      "pr_number": 156556,
+      "pr_url": "https://github.com/rust-lang/rust/pull/156556",
+      "merged_at": "2026-05-16T00:50:13Z",
+      "lines_added": 10,
+      "lines_removed": 5,
+      "lines_changed": 15,
+      "labels": [
+        "T-compiler",
+        "S-waiting-on-bors",
+        "T-libs"
+      ]
+    },
+    {
+      "id": "PR_kwDOAAsO6M7cb2gG",
+      "title": "Preserve spans when hiding do_not_recommend impls",
+      "repo": "rust-lang/rust",
+      "repo_language": "Rust",
+      "pr_number": 156676,
+      "pr_url": "https://github.com/rust-lang/rust/pull/156676",
+      "merged_at": "2026-05-18T04:49:18Z",
+      "lines_added": 96,
+      "lines_removed": 3,
+      "lines_changed": 99,
+      "labels": [
+        "T-compiler",
+        "S-waiting-on-bors"
+      ]
+    },
+    {
+      "id": "PR_kwDOM7BPMc7ddELM",
+      "title": "Treat dot paths as local inputs",
+      "repo": "superradcompany/microsandbox",
+      "repo_language": "Rust",
+      "pr_number": 764,
+      "pr_url": "https://github.com/superradcompany/microsandbox/pull/764",
+      "merged_at": "2026-05-20T13:06:26Z",
+      "lines_added": 115,
+      "lines_removed": 10,
+      "lines_changed": 125,
+      "labels": []
+    },
+    {
+      "id": "PR_kwDOAAsO6M7dQlLS",
+      "title": "Account for proc macro spans in do_not_recommend diagnostics",
+      "repo": "rust-lang/rust",
+      "repo_language": "Rust",
+      "pr_number": 156763,
+      "pr_url": "https://github.com/rust-lang/rust/pull/156763",
+      "merged_at": "2026-05-20T15:13:15Z",
+      "lines_added": 76,
+      "lines_removed": 0,
+      "lines_changed": 76,
+      "labels": [
+        "T-compiler",
+        "merged-by-bors"
+      ]
+    },
+    {
+      "id": "PR_kwDODbtdrc7d3EOO",
+      "title": "Revert \"Update ui test suite to nightly-2026-05-19\"",
+      "repo": "dtolnay/cxx",
+      "repo_language": "Rust",
+      "pr_number": 1714,
+      "pr_url": "https://github.com/dtolnay/cxx/pull/1714",
+      "merged_at": "2026-05-21T09:15:50Z",
+      "lines_added": 27,
+      "lines_removed": 34,
+      "lines_changed": 61,
+      "labels": []
+    },
+    {
+      "id": "PR_kwDOAAsO6M7eciDh",
+      "title": "[single_use_lifetimes]: Account for lifetime bounds",
+      "repo": "rust-lang/rust",
+      "repo_language": "Rust",
+      "pr_number": 156839,
+      "pr_url": "https://github.com/rust-lang/rust/pull/156839",
+      "merged_at": "2026-05-24T13:02:39Z",
+      "lines_added": 57,
+      "lines_removed": 47,
+      "lines_changed": 104,
+      "labels": [
+        "T-compiler",
+        "merged-by-bors"
+      ]
+    },
+    {
+      "id": "PR_kwDOAAsO6M7eyQ9z",
+      "title": "codegen: re-enable FileCheck for scalable-vector tuple intrinsics",
+      "repo": "rust-lang/rust",
+      "repo_language": "Rust",
+      "pr_number": 156878,
+      "pr_url": "https://github.com/rust-lang/rust/pull/156878",
+      "merged_at": "2026-05-25T23:20:39Z",
+      "lines_added": 28,
+      "lines_removed": 27,
+      "lines_changed": 55,
+      "labels": [
+        "T-compiler",
+        "S-waiting-on-bors"
+      ]
+    },
+    {
+      "id": "PR_kwDOKbIFZc7e0YDI",
+      "title": "Reject duplicate PEP 723 script blocks",
+      "repo": "astral-sh/uv",
+      "repo_language": "Rust",
+      "pr_number": 19544,
+      "pr_url": "https://github.com/astral-sh/uv/pull/19544",
+      "merged_at": "2026-05-26T13:43:20Z",
+      "lines_added": 115,
+      "lines_removed": 6,
+      "lines_changed": 121,
+      "labels": []
+    },
+    {
+      "id": "PR_kwDOAAsO6M7fcBXP",
+      "title": "coverage: Use original HIR info for synthetic by-move coroutine bodies",
+      "repo": "rust-lang/rust",
+      "repo_language": "Rust",
+      "pr_number": 156970,
+      "pr_url": "https://github.com/rust-lang/rust/pull/156970",
+      "merged_at": "2026-05-27T23:06:32Z",
+      "lines_added": 138,
+      "lines_removed": 3,
+      "lines_changed": 141,
+      "labels": [
+        "T-compiler",
+        "S-waiting-on-bors"
+      ]
+    }
+  ],
+  "stats": {
+    "total_prs": 14,
+    "repos_touched": [
+      "astral-sh/uv",
+      "dtolnay/cxx",
+      "rust-lang/cargo",
+      "rust-lang/reference",
+      "rust-lang/rust",
+      "superradcompany/microsandbox"
+    ],
+    "languages": [
+      "Rust"
+    ],
+    "total_lines_changed": 1207
+  }
+}
