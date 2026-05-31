@@ -10,17 +10,13 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 
 jobs:
-  fetch:
+  data:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
-      pages: write
-      id-token: write
 
     steps:
       - name: Checkout
@@ -60,25 +56,4 @@ jobs:
             git commit -m "chore: archive $(date +%Y-%m) contributions"
           git push
 
-  build:
-    needs: fetch
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v6
-
-      - name: Build and upload site
-        uses: withastro/action@v6
-        with:
-          node-version: 26
-
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v5
+# The deploy workflow will gets triggered by the push to main and will handle the actual deployment to GitHub Pages.
