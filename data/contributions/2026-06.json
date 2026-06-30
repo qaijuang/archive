@@ -1,0 +1,177 @@
+{
+  "month": "2026-06",
+  "generated_at": "2026-06-30T01:53:42Z",
+  "contributions": [
+    {
+      "id": "PR_kwDOAAsO6M7fwLfX",
+      "title": "Avoid `unreachable_code` on required return values",
+      "repo": "rust-lang/rust",
+      "repo_language": "Rust",
+      "pr_number": 157009,
+      "pr_url": "https://github.com/rust-lang/rust/pull/157009",
+      "merged_at": "2026-06-02T19:23:20Z",
+      "lines_added": 16,
+      "lines_removed": 0,
+      "lines_changed": 16,
+      "labels": [
+        "T-compiler",
+        "S-waiting-on-bors"
+      ]
+    },
+    {
+      "id": "PR_kwDOAAsO6M7iwKIr",
+      "title": "rustdoc: don't link doc(hidden) associated type projections",
+      "repo": "rust-lang/rust",
+      "repo_language": "Rust",
+      "pr_number": 157438,
+      "pr_url": "https://github.com/rust-lang/rust/pull/157438",
+      "merged_at": "2026-06-05T22:29:51Z",
+      "lines_added": 29,
+      "lines_removed": 2,
+      "lines_changed": 31,
+      "labels": [
+        "T-rustdoc",
+        "S-waiting-on-bors",
+        "T-rustdoc-frontend"
+      ]
+    },
+    {
+      "id": "PR_kwDOAAsO6M7jqny8",
+      "title": "Test fixup",
+      "repo": "rust-lang/rust",
+      "repo_language": "Rust",
+      "pr_number": 157581,
+      "pr_url": "https://github.com/rust-lang/rust/pull/157581",
+      "merged_at": "2026-06-08T01:09:26Z",
+      "lines_added": 1,
+      "lines_removed": 1,
+      "lines_changed": 2,
+      "labels": [
+        "T-rustdoc",
+        "S-waiting-on-bors",
+        "T-rustdoc-frontend"
+      ]
+    },
+    {
+      "id": "PR_kwDOKbIFZc7j8UPO",
+      "title": "Fix compile error",
+      "repo": "astral-sh/uv",
+      "repo_language": "Rust",
+      "pr_number": 19739,
+      "pr_url": "https://github.com/astral-sh/uv/pull/19739",
+      "merged_at": "2026-06-08T15:04:25Z",
+      "lines_added": 23,
+      "lines_removed": 11,
+      "lines_changed": 34,
+      "labels": [
+        "internal"
+      ]
+    },
+    {
+      "id": "PR_kwDOOMlZL87XnzwR",
+      "title": "Fix zh-Hant locale fallback",
+      "repo": "microsoft/edit",
+      "repo_language": "Rust",
+      "pr_number": 846,
+      "pr_url": "https://github.com/microsoft/edit/pull/846",
+      "merged_at": "2026-06-09T14:19:37Z",
+      "lines_added": 39,
+      "lines_removed": 3,
+      "lines_changed": 42,
+      "labels": []
+    },
+    {
+      "id": "PR_kwDOAAsO6M7gYRno",
+      "title": "Don't recover `&raw EXPR` as a missing comma",
+      "repo": "rust-lang/rust",
+      "repo_language": "Rust",
+      "pr_number": 157079,
+      "pr_url": "https://github.com/rust-lang/rust/pull/157079",
+      "merged_at": "2026-06-12T23:55:33Z",
+      "lines_added": 88,
+      "lines_removed": 45,
+      "lines_changed": 133,
+      "labels": [
+        "T-compiler",
+        "S-waiting-on-bors"
+      ]
+    },
+    {
+      "id": "PR_kwDOAAsO6M7l9iS2",
+      "title": "rustdoc: Don't strip hidden items in `AliasedNonLocalStripper`",
+      "repo": "rust-lang/rust",
+      "repo_language": "Rust",
+      "pr_number": 157838,
+      "pr_url": "https://github.com/rust-lang/rust/pull/157838",
+      "merged_at": "2026-06-13T21:21:52Z",
+      "lines_added": 35,
+      "lines_removed": 4,
+      "lines_changed": 39,
+      "labels": [
+        "T-rustdoc",
+        "S-waiting-on-bors",
+        "T-rustdoc-frontend"
+      ]
+    },
+    {
+      "id": "PR_kwDOAAsO6M7mHvEN",
+      "title": "`suspicious_double_ref_op`: report unadjusted return type",
+      "repo": "rust-lang/rust",
+      "repo_language": "Rust",
+      "pr_number": 157872,
+      "pr_url": "https://github.com/rust-lang/rust/pull/157872",
+      "merged_at": "2026-06-15T16:56:08Z",
+      "lines_added": 31,
+      "lines_removed": 7,
+      "lines_changed": 38,
+      "labels": [
+        "T-compiler",
+        "S-waiting-on-bors"
+      ]
+    },
+    {
+      "id": "PR_kwDOAAsO6M7mwZ6X",
+      "title": "Do not use desugared local names in tail_expr_drop_order diagnostics",
+      "repo": "rust-lang/rust",
+      "repo_language": "Rust",
+      "pr_number": 157942,
+      "pr_url": "https://github.com/rust-lang/rust/pull/157942",
+      "merged_at": "2026-06-21T16:21:43Z",
+      "lines_added": 58,
+      "lines_removed": 11,
+      "lines_changed": 69,
+      "labels": [
+        "T-compiler",
+        "S-waiting-on-bors"
+      ]
+    },
+    {
+      "id": "PR_kwDOAAsO6M7dE4NI",
+      "title": "Improve E0637 suggestions for associated type bindings",
+      "repo": "rust-lang/rust",
+      "repo_language": "Rust",
+      "pr_number": 156750,
+      "pr_url": "https://github.com/rust-lang/rust/pull/156750",
+      "merged_at": "2026-06-21T19:44:03Z",
+      "lines_added": 133,
+      "lines_removed": 18,
+      "lines_changed": 151,
+      "labels": [
+        "T-compiler",
+        "S-waiting-on-bors"
+      ]
+    }
+  ],
+  "stats": {
+    "total_prs": 10,
+    "repos_touched": [
+      "astral-sh/uv",
+      "microsoft/edit",
+      "rust-lang/rust"
+    ],
+    "languages": [
+      "Rust"
+    ],
+    "total_lines_changed": 555
+  }
+}
