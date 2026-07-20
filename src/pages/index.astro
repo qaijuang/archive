@@ -24,7 +24,9 @@ const totalAll = years.reduce((sum, [, count]) => sum + count, 0);
 <Base title="Rust Compiler Contribution Archive">
   <header class="site-header">
     <nav>
-      <a class="home-link" href="/">Rust Compiler Contribution Archive</a>
+      <a class="home-link" href={`${base}/`}
+        >Rust Compiler Contribution Archive</a
+      >
     </nav>
   </header>
 
@@ -37,8 +39,9 @@ const totalAll = years.reduce((sum, [, count]) => sum + count, 0);
         serves as a public record of my ongoing compiler work.
       </p>
       <p class="intro-total muted">
-        {totalAll} merged pull request{totalAll !== 1 ? "s" : ""} across
-        {years.length} year{years.length !== 1 ? "s" : ""}.
+        {totalAll} merged pull request{totalAll !== 1 ? "s" : ""} across {
+          years.length
+        } year{years.length !== 1 ? "s" : ""}.
       </p>
     </section>
 
