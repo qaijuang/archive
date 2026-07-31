@@ -1,0 +1,162 @@
+{
+  "month": "2026-07",
+  "generated_at": "2026-07-31T01:18:08Z",
+  "contributions": [
+    {
+      "id": "PR_kwDOAAsO6M7Z4wBr",
+      "title": "Reject linked dylib EII default overrides",
+      "repo": "rust-lang/rust",
+      "repo_language": "Rust",
+      "pr_number": 156370,
+      "pr_url": "https://github.com/rust-lang/rust/pull/156370",
+      "merged_at": "2026-07-10T05:17:02Z",
+      "lines_added": 237,
+      "lines_removed": 38,
+      "lines_changed": 275,
+      "labels": [
+        "T-compiler",
+        "S-waiting-on-bors",
+        "F-extern_item_impls"
+      ]
+    },
+    {
+      "id": "PR_kwDOAAsO6M7jYjzW",
+      "title": "Fix relative paths in private import suggestions",
+      "repo": "rust-lang/rust",
+      "repo_language": "Rust",
+      "pr_number": 157524,
+      "pr_url": "https://github.com/rust-lang/rust/pull/157524",
+      "merged_at": "2026-07-13T14:57:23Z",
+      "lines_added": 253,
+      "lines_removed": 24,
+      "lines_changed": 277,
+      "labels": [
+        "T-compiler",
+        "S-waiting-on-bors"
+      ]
+    },
+    {
+      "id": "PR_kwDOAAsO6M7b8Od3",
+      "title": "Consider structurally impossible Sized predicates in MIR",
+      "repo": "rust-lang/rust",
+      "repo_language": "Rust",
+      "pr_number": 156609,
+      "pr_url": "https://github.com/rust-lang/rust/pull/156609",
+      "merged_at": "2026-07-13T23:27:29Z",
+      "lines_added": 62,
+      "lines_removed": 2,
+      "lines_changed": 64,
+      "labels": [
+        "T-compiler",
+        "S-waiting-on-bors"
+      ]
+    },
+    {
+      "id": "PR_kwDOAAsO6M7zTs6R",
+      "title": "Some cleanup in `rustc_attr_parsing`",
+      "repo": "rust-lang/rust",
+      "repo_language": "Rust",
+      "pr_number": 159508,
+      "pr_url": "https://github.com/rust-lang/rust/pull/159508",
+      "merged_at": "2026-07-19T14:03:03Z",
+      "lines_added": 106,
+      "lines_removed": 132,
+      "lines_changed": 238,
+      "labels": [
+        "A-attributes",
+        "T-compiler",
+        "S-waiting-on-bors"
+      ]
+    },
+    {
+      "id": "PR_kwDOAAsO6M7abw7-",
+      "title": "Add paths for linked associated items",
+      "repo": "rust-lang/rust",
+      "repo_language": "Rust",
+      "pr_number": 156474,
+      "pr_url": "https://github.com/rust-lang/rust/pull/156474",
+      "merged_at": "2026-07-22T06:21:51Z",
+      "lines_added": 121,
+      "lines_removed": 16,
+      "lines_changed": 137,
+      "labels": [
+        "T-rustdoc",
+        "S-waiting-on-bors",
+        "A-rustdoc-json",
+        "T-rustdoc-json-backend"
+      ]
+    },
+    {
+      "id": "PR_kwDOAAsO6M72LN-2",
+      "title": "More cleanup in `rustc_attr_parsing`",
+      "repo": "rust-lang/rust",
+      "repo_language": "Rust",
+      "pr_number": 159875,
+      "pr_url": "https://github.com/rust-lang/rust/pull/159875",
+      "merged_at": "2026-07-27T02:42:23Z",
+      "lines_added": 68,
+      "lines_removed": 77,
+      "lines_changed": 145,
+      "labels": [
+        "A-attributes",
+        "T-compiler",
+        "S-waiting-on-bors"
+      ]
+    },
+    {
+      "id": "PR_kwDOOMlZL871oy3R",
+      "title": "Require --goto for file positions",
+      "repo": "microsoft/edit",
+      "repo_language": "Rust",
+      "pr_number": 900,
+      "pr_url": "https://github.com/microsoft/edit/pull/900",
+      "merged_at": "2026-07-27T16:47:14Z",
+      "lines_added": 83,
+      "lines_removed": 73,
+      "lines_changed": 156,
+      "labels": []
+    },
+    {
+      "id": "PR_kwDOAAsO6M7xDX6R",
+      "title": "Don't optimize across storage markers in SimplifyComparisonIntegral",
+      "repo": "rust-lang/rust",
+      "repo_language": "Rust",
+      "pr_number": 159220,
+      "pr_url": "https://github.com/rust-lang/rust/pull/159220",
+      "merged_at": "2026-07-28T09:33:38Z",
+      "lines_added": 238,
+      "lines_removed": 113,
+      "lines_changed": 351,
+      "labels": [
+        "T-compiler",
+        "S-waiting-on-bors",
+        "perf-regression"
+      ]
+    },
+    {
+      "id": "PR_kwDOKbIFZc7j_nD7",
+      "title": "Add support for Xonsh virtual environment activation script (`activate.xsh`)",
+      "repo": "astral-sh/uv",
+      "repo_language": "Rust",
+      "pr_number": 19740,
+      "pr_url": "https://github.com/astral-sh/uv/pull/19740",
+      "merged_at": "2026-07-30T13:58:31Z",
+      "lines_added": 132,
+      "lines_removed": 6,
+      "lines_changed": 138,
+      "labels": []
+    }
+  ],
+  "stats": {
+    "total_prs": 9,
+    "repos_touched": [
+      "astral-sh/uv",
+      "microsoft/edit",
+      "rust-lang/rust"
+    ],
+    "languages": [
+      "Rust"
+    ],
+    "total_lines_changed": 1781
+  }
+}
