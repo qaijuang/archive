@@ -1,0 +1,64 @@
+{
+  "month": "2026-08",
+  "generated_at": "2026-08-31T01:40:34Z",
+  "contributions": [
+    {
+      "id": "PR_kwDOAAsO6M7bz9dj",
+      "title": "Improve diagnostics for ambiguous binops with as _",
+      "repo": "rust-lang/rust",
+      "repo_language": "Rust",
+      "pr_number": 156591,
+      "pr_url": "https://github.com/rust-lang/rust/pull/156591",
+      "merged_at": "2026-08-18T09:33:33Z",
+      "lines_added": 178,
+      "lines_removed": 3,
+      "lines_changed": 181,
+      "labels": [
+        "T-compiler",
+        "S-waiting-on-bors"
+      ]
+    },
+    {
+      "id": "PR_kwDOAAsO6M7XKoHl",
+      "title": "Check `redundant_explicit_links` against generated URLs",
+      "repo": "rust-lang/rust",
+      "repo_language": "Rust",
+      "pr_number": 156009,
+      "pr_url": "https://github.com/rust-lang/rust/pull/156009",
+      "merged_at": "2026-08-25T01:40:55Z",
+      "lines_added": 128,
+      "lines_removed": 42,
+      "lines_changed": 170,
+      "labels": [
+        "T-rustdoc",
+        "S-waiting-on-bors"
+      ]
+    },
+    {
+      "id": "PR_kwDOAAsO6M8AAAABBO6Jww",
+      "title": "Do not load macro metadata for local definitions in rustdoc",
+      "repo": "rust-lang/rust",
+      "repo_language": "Rust",
+      "pr_number": 161877,
+      "pr_url": "https://github.com/rust-lang/rust/pull/161877",
+      "merged_at": "2026-08-29T08:30:47Z",
+      "lines_added": 61,
+      "lines_removed": 8,
+      "lines_changed": 69,
+      "labels": [
+        "T-rustdoc",
+        "S-waiting-on-bors"
+      ]
+    }
+  ],
+  "stats": {
+    "total_prs": 3,
+    "repos_touched": [
+      "rust-lang/rust"
+    ],
+    "languages": [
+      "Rust"
+    ],
+    "total_lines_changed": 420
+  }
+}
