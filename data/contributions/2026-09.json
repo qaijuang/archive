@@ -1,0 +1,33 @@
+{
+  "month": "2026-09",
+  "generated_at": "2026-09-30T02:28:08Z",
+  "contributions": [
+    {
+      "id": "PR_kwDOAAsO6M73a8ix",
+      "title": "Preserve explicit register names in inline asm diagnostics",
+      "repo": "rust-lang/rust",
+      "repo_language": "Rust",
+      "pr_number": 160068,
+      "pr_url": "https://github.com/rust-lang/rust/pull/160068",
+      "merged_at": "2026-09-25T05:40:55Z",
+      "lines_added": 195,
+      "lines_removed": 41,
+      "lines_changed": 236,
+      "labels": [
+        "T-compiler",
+        "S-waiting-on-bors",
+        "T-clippy"
+      ]
+    }
+  ],
+  "stats": {
+    "total_prs": 1,
+    "repos_touched": [
+      "rust-lang/rust"
+    ],
+    "languages": [
+      "Rust"
+    ],
+    "total_lines_changed": 236
+  }
+}
